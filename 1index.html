@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjaya Jayasinghe | Graphic Designer & Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-darker: #050508;
+            --neon-green: #00ff9d;
+            --neon-pink: #ff00ff;
+            --neon-blue: #00e0ff;
+            --text-light: #f0f0f0;
+            --text-gray: #aaaaaa;
+            --card-bg: #151520;
+            --shadow: rgba(0, 255, 157, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--neon-pink);
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: var(--neon-green);
+            border: 2px solid var(--neon-green);
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--neon-green);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--neon-green);
+        }
+
+        .logo span {
+            color: var(--neon-pink);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-green);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--neon-green);
+        }
+
+        /* Home Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.1) 0%, rgba(0, 255, 157, 0) 70%);
+            top: 10%;
+            right: 10%;
+            z-index: -1;
+        }
+
+        #home::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.1) 0%, rgba(255, 0, 255, 0) 70%);
+            bottom: 10%;
+            left: 5%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            color: var(--neon-blue);
+            font-weight: 600;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            margin-right: 15px;
+            font-size: 1.3rem;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--neon-green);
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 255, 157, 0.2);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--bg-darker);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background-color: var(--card-bg);
+            padding: 8px 20px;
+            margin: 0 10px 10px 0;
+            border-radius: 20px;
+            border-left: 3px solid var(--neon-pink);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 255, 157, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.15);
+            border-color: var(--neon-green);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: rgba(0, 224, 255, 0.1);
+            color: var(--neon-blue);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Video Section */
+        #video {
+            background-color: var(--bg-darker);
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-placeholder {
+            background-color: #050508;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .video-placeholder i {
+            font-size: 4rem;
+            color: var(--neon-pink);
+            margin-bottom: 20px;
+        }
+
+        .video-placeholder h3 {
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        #video-url {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        #video-url:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+        }
+
+        /* Contact Section */
+        #contact {
+            padding-bottom: 150px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            color: var(--neon-green);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+        }
+
+        .contact-details h4 {
+            color: var(--neon-blue);
+            margin-bottom: 5px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-darker);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 157, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .copyright {
+            color: var(--text-gray);
+        }
+
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-left: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-img, .about-text {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: all 0.4s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .video-placeholder {
+                height: 400px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+            
+            .footer-links li {
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .video-placeholder {
+                height: 300px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">Sanjaya<span>.</span></a>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sanjaya Jayasinghe</h1>
+                <h3>Graphic Designer / Web Developer</h3>
+                <p>Creating stunning digital experiences with a blend of <span class="highlight">creative design</span> and <span class="highlight">clean code</span>. I bring ideas to life through innovative visual solutions and functional web applications.</p>
+                <a href="#projects" class="btn">View My Work</a>
+                <div class="social-icons">
+                    <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                    <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Sanjaya Jayasinghe">
+                </div>
+                <div class="about-text">
+                    <p>Hello! I'm Sanjaya, a passionate graphic designer and web developer with over 7 years of experience creating digital solutions that blend aesthetics with functionality.</p>
+                    <p>My expertise spans across UI/UX design, brand identity, front-end development, and responsive web design. I believe in creating designs that not only look beautiful but also solve real-world problems.</p>
+                    <p>When I'm not designing or coding, you can find me exploring new design trends, experimenting with emerging web technologies, or sharing knowledge with the creative community.</p>
+                    <h3>Skills</h3>
+                    <div class="skills">
+                        <div class="skill">UI/UX Design</div>
+                        <div class="skill">Brand Identity</div>
+                        <div class="skill">HTML5 & CSS3</div>
+                        <div class="skill">JavaScript</div>
+                        <div class="skill">Adobe Creative Suite</div>
+                        <div class="skill">Figma</div>
+                        <div class="skill">Responsive Design</div>
+                        <div class="skill">WordPress</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="E-commerce Website">
+                    </div>
+                    <div class="project-info">
+                        <h3>NeonTech E-Commerce</h3>
+                        <p>A modern e-commerce website with neon aesthetics, featuring a custom shopping cart, product filtering, and secure checkout.</p>
+                        <div class="project-tags">
+                            <span class="tag">UI/UX Design</span>
+                            <span class="tag">Web Development</span>
+                            <span class="tag">E-Commerce</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Brand Identity">
+                    </div>
+                    <div class="project-info">
+                        <h3>CyberWave Brand Identity</h3>
+                        <p>Complete brand identity package for a tech startup, including logo design, brand guidelines, and marketing materials.</p>
+                        <div class="project-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Logo Design</span>
+                            <span class="tag">Graphic Design</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Portfolio Website">
+                    </div>
+                    <div class="project-info">
+                        <h3>Artist Portfolio Website</h3>
+                        <p>A responsive portfolio website for a digital artist with gallery filtering, lightbox display, and contact form.</p>
+                        <div class="project-tags">
+                            <span class="tag">Web Design</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video">
+        <div class="container">
+            <h2>Featured Video</h2>
+            <div class="video-container">
+                <div class="video-placeholder" id="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <h3>Insert Your YouTube/Vimeo URL</h3>
+                    <p>Paste a video URL below to embed it here</p>
+                    <input type="text" id="video-url" placeholder="Paste YouTube or Vimeo URL here">
+                    <button class="btn" id="embed-btn">Embed Video</button>
+                </div>
+                <div id="video-player" style="display: none;">
+                    <!-- Embedded video will appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Colombo, Sri Lanka</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>sanjaya@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+94 77 123 4567</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2023 Sanjaya Jayasinghe. All Rights Reserved.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Video embedding functionality
+        const embedBtn = document.getElementById('embed-btn');
+        const videoUrlInput = document.getElementById('video-url');
+        const videoPlaceholder = document.getElementById('video-placeholder');
+        const videoPlayer = document.getElementById('video-player');
+        
+        embedBtn.addEventListener('click', () => {
+            const url = videoUrlInput.value.trim();
+            
+            if (!url) {
+                alert('Please enter a YouTube or Vimeo URL');
+                return;
+            }
+            
+            let embedCode = '';
+            
+            // Check if it's a YouTube URL
+            if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                let videoId = '';
+                
+                if (url.includes('youtube.com')) {
+                    videoId = url.split('v=')[1];
+                    const ampersandPosition = videoId.indexOf('&');
+                    if (ampersandPosition !== -1) {
+                        videoId = videoId.substring(0, ampersandPosition);
+                    }
+                } else if (url.includes('youtu.be')) {
+                    videoId = url.split('youtu.be/')[1];
+                }
+                
+                embedCode = `
+                    <iframe 
+                        width="100%" 
+                        height="500" 
+                        src="https://www.youtube.com/embed/${videoId}" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            }
+            // Check if it's a Vimeo URL
+            else if (url.includes('vimeo.com')) {
+                const videoId = url.split('vimeo.com/')[1];
+                embedCode = `
+                    <iframe 
+                        src="https://player.vimeo.com/video/${videoId}" 
+                        width="100%" 
+                        height="500" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            }
+            else {
+                alert('Please enter a valid YouTube or Vimeo URL');
+                return;
+            }
+            
+            // Hide placeholder and show embedded video
+            videoPlaceholder.style.display = 'none';
+            videoPlayer.innerHTML = embedCode;
+            videoPlayer.style.display = 'block';
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = new FormData(contactForm);
+            const name = contactForm.querySelector('input[type="text"]').value;
+            const email = contactForm.querySelector('input[type="email"]').value;
+            
+            // In a real application, you would send this data to a server
+            // For demo purposes, just show an alert
+            alert(`Thank you ${name}! Your message has been sent. I'll get back to you at ${email} soon.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
